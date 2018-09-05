@@ -44,7 +44,7 @@ mix.scripts([
 
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts');
 mix.copy('resources/assets/admin/dist/fonts', 'public/fonts');
-// mix.copy('resources/assets/admin/dist/img', 'public/img');
+mix.copy('resources/assets/admin/dist/img', 'public/img');
 // mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css');
 
 // mix.styles([
@@ -67,5 +67,3 @@ mix.copy('resources/assets/admin/dist/fonts', 'public/fonts');
 //     'resources/assets/front/js/scripts.js'
 // ], 'public/js/front.js');
 
-mix.copy('resources/assets/front/fonts', 'public/fonts');
-mix.copy('resources/assets/front/images', 'public/images');
