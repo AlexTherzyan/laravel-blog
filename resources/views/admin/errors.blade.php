@@ -1,7 +1,12 @@
-@section('category_error')
+
+{{--@section('category_error')--}}
 
 @if ($errors->any())
-    <small style="color:red;">Поле не может быть пустым!</small>
+
+    @foreach ($errors->all() as $error)
+        <small style="color:red;">{{ $error }}</small>
+    @endforeach
+
 @endif
 
-@endsection
+{{--@stop--}}

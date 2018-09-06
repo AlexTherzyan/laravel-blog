@@ -3,6 +3,7 @@
 
 @section('content')
 
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -26,6 +27,9 @@
                 <div class="box-header">
                     <h3 class="box-title">Листинг сущности</h3>
                 </div>
+
+            @include('flash::message')
+
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
@@ -45,7 +49,17 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->title}}</td>
-                                <td><a href="edit.html" class="fa fa-pencil"></a> <a href="#" class="fa fa-remove"></a></td>
+                                <td>
+                                    <a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
+
+                                    {{ Form::open([ 'route' => ['categories.destroy', $category->id] , 'method' => 'delete' ])  }}
+
+                                    <button type="submit" class="delete">
+                                    <a href="#" class="fa fa-remove"></a>
+                                    </button>
+
+                                    {{Form::close()}}
+                                </td>
                             </tr>
                         @endforeach
 
@@ -57,10 +71,16 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
+            <script>
+                $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+            </script>
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+
+
 
 @endsection

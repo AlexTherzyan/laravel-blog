@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                        @yield('category_error')
+                        @include('admin.errors')
                     </div>
                 </div>
             </div>

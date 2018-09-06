@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Laracasts\Flash\Flash;
 
 class CategoriesController extends Controller
 {
@@ -19,6 +20,7 @@ class CategoriesController extends Controller
     public function create()
     {
 
+
         return view('admin.categories.create');
     }
 
@@ -32,7 +34,28 @@ class CategoriesController extends Controller
         ]);
 
         Category::create($request->all()); // создаем категорию
+        Flash::success('Категория успешна создана!');
         return redirect()->route('categories.index');
     }
+
+    public function edit($id)
+    {
+
+        $category = Category::find($id);
+        return view('admin.categories.edit', ['category' => $category]);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        $category = Category::find($id);
+        $category->update($request->all());
+        return redirect()->route('categories.index');
+    }
+
+
 
 }

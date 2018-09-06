@@ -160,6 +160,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // my installer
+        Barryvdh\Debugbar\ServiceProvider::class, //debug bar
         Collective\Html\HtmlServiceProvider::class, // laravel forms
         JeroenNoten\LaravelAdminLte\ServiceProvider::class, //admin ltephp artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets
     ],
