@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', 'Admin\DashBoardController@index');
+
+Route::resource('/admin/categories', 'Admin\CategoriesController');
