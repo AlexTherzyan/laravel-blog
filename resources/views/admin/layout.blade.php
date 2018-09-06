@@ -247,7 +247,9 @@
 
 
     <!-- =============================================== -->
-    @include('admin.errors')
+
+    {{--@include('admin.errors')--}}
+
 
     @yield('content')
 

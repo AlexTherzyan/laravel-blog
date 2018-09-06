@@ -73,19 +73,22 @@ class User extends Authenticatable
     {
         if ($image == null) return;
         //ларавеловские методы
-        Storage::delete('uploads/' . $this->image); //удаление предыдущей картинки если таковая была
+        if ($this->avatar != null){
+            Storage::delete('uploads/' . $this->avatar); //удаление предыдущей картинки если таковая была
+        }
+
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('uploads',$filename);
-        $this->image = $filename;
+        $image->storeAs('uploads',$filename);
+        $this->avatar = $filename;
         $this->save();
 
     }
 
     public function getAvatar ()
     {
-        if ($this->image == null) return '/img/no-user-image.png';
+        if ($this->avatar == null) return '/img/no-image.png';
 
-        return '/uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
     }
 
 //******************************ADMIN

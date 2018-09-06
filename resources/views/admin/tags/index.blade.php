@@ -28,12 +28,12 @@
                     <h3 class="box-title">Листинг сущности</h3>
                 </div>
 
-            @include('flash::message')
+
 
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('categories.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('tags.create')}}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -45,14 +45,15 @@
                         </thead>
                         <tbody>
 
-                        @foreach($categories as $category)
-                            <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->title}}</td>
-                                <td>
-                                    <a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
+                        @foreach($tags as $tag)
 
-                                    {{ Form::open([ 'route' => ['categories.destroy', $category->id] , 'method' => 'delete' ])  }}
+                            <tr>
+                                <td>{{$tag->id}}</td>
+                                <td>{{$tag->title}}</td>
+                                <td>
+                                    <a href="{{route('tags.edit', $tag->id)}}" class="fa fa-pencil"></a>
+
+                                    {{ Form::open([ 'route' => ['tags.destroy', $tag->id] , 'method' => 'delete' ])  }}
 
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                     <i  class="fa fa-remove"></i>
@@ -61,9 +62,9 @@
                                     {{Form::close()}}
                                 </td>
                             </tr>
+
+
                         @endforeach
-
-
 
                         </tfoot>
                     </table>

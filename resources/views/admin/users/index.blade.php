@@ -27,42 +27,47 @@
                 <div class="box-header">
                     <h3 class="box-title">Листинг сущности</h3>
                 </div>
-
-
-
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('tags.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('users.create')}}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Название</th>
+                            <th>Имя</th>
+                            <th>E-mail</th>
+                            <th>Аватар</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($tags as $tag)
+                        @foreach($users as $user)
 
-                            <tr>
-                                <td>{{$tag->id}}</td>
-                                <td>{{$tag->title}}</td>
-                                <td>
-                                    <a href="{{route('tags.edit', $tag->id)}}" class="fa fa-pencil"></a>
+                        <tr>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                <img src="{{ $user->getAvatar()  }}" alt="" class="img-responsive" width="150">
+                            </td>
+                            <td><a href="{{ route('users.edit', $user->id) }}" class="fa fa-pencil"></a> <a href="#" class="fa fa-remove"></a></td>
 
-                                    {{ Form::open([ 'route' => ['tags.destroy', $tag->id] , 'method' => 'delete' ])  }}
+                            <td>
+                                <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
 
-                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                {{ Form::open([ 'route' => ['users.destroy', $user->id] , 'method' => 'delete' ])  }}
+
+                                <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                     <i  class="fa fa-remove"></i>
-                                    </button>
+                                </button>
 
-                                    {{Form::close()}}
-                                </td>
-                            </tr>
+                                {{Form::close()}}
+                            </td>
 
+                        </tr>
 
                         @endforeach
 
@@ -72,10 +77,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
-            <script>
-                $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-            </script>
+
         </section>
         <!-- /.content -->
     </div>

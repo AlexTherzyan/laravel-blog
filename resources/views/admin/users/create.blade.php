@@ -1,54 +1,65 @@
 @extends('admin.layout')
 @section('content')
 
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Добавить пользователя
+                <small>приятные слова..</small>
+            </h1>
+        </section>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Добавить категорию
-            <small>приятные слова..</small>
-        </h1>
-    </section>
+
 
     <!-- Main content -->
-    <section class="content">
+        <section class="content">
 
-        <!-- Default box -->
-        <div class="box">
+            {{ Form::open(['route' => 'users.store', 'files' => 'true'])  }}
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Добавляем пользователя</h3>
+                </div>
+                @include('admin.errors')
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Имя</label>
+                            <input name="name" value="{{old('name')}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-mail</label>
+                            <input name="email" value="{{old('email')}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Пароль</label>
+                            <input name="password" type="password" class="form-control" id="exampleInputEmail1" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Аватар</label>
+                            <input name="avatar" type="file" id="exampleInputFile">
 
-            {!! Form::open(['route' => 'tags.store']) !!}
-
-
-            <div class="box-header with-border">
-                <h3 class="box-title">Добавляем категорию</h3>
-            </div>
-            <div class="box-body">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Название</label>
-                        <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
-                        @include('admin.errors')
+                            <p class="help-block">Какое-нибудь уведомление о форматах..</p>
+                        </div>
                     </div>
                 </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <a  href="{{route('users.index')}}" class="btn btn-default">Назад</a>
+                    <button class="btn btn-success pull-right">Добавить</button>
+                </div>
+                <!-- /.box-footer-->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                <a href="{{route('tags.index')}}" class="btn btn-default">Назад</a>
-                <button class="btn btn-success pull-right">Добавить</button>
-            </div>
-            <!-- /.box-footer-->
+            <!-- /.box -->
 
-            {!! Form::close() !!}
+            {{Form::close()}}
 
-        </div>
-        <!-- /.box -->
-
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
 
 @endsection

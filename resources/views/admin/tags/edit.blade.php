@@ -7,7 +7,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Добавить категорию
+                Добавить тег
                 <small>приятные слова..</small>
             </h1>
         </section>
@@ -18,23 +18,23 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Меняем категорию</h3>
+                    <h3 class="box-title">Меняем тег</h3>
                 </div>
 
-                {!! Form::open(['route' => ['categories.update' , $category->id ], 'method' => 'put'] ) !!}
+                {!! Form::open(['route' => ['tags.update' , $tag->id ], 'method' => 'put'] ) !!}
                     <div class="box-body">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Название</label>
 
-                                <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$category->title}}">
+                                <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$tag->title}}">
                                 @include('admin.errors')
                             </div>
                         </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <button class="btn btn-default">Назад</button>
+                        <a href="{{route('tags.index')}}" class="btn btn-default">Назад</a>
                         <button class="btn btn-warning pull-right">Изменить</button>
                     </div>
                     <!-- /.box-footer-->
