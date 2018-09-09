@@ -22,66 +22,70 @@
         <!-- Main content -->
         <section class="content">
 
+            {{Form::open([
+                'route' => 'posts.store',
+                'files' => true
+
+            ])}}
+
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Листинг сущности</h3>
+                    @include('admin.errors')
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('users.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{ route('posts.create') }}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Имя</th>
-                            <th>E-mail</th>
-                            <th>Аватар</th>
+                            <th>Название</th>
+                            <th>Категория</th>
+                            <th>Теги</th>
+                            <th>Картинка</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($users as $user)
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{$post->id}}</td>
+                                <td>{{$post->title}}</td>
+                                <td>{{$post->getCategoryTitle()}}</td>
+                                <td>{{$post->getTagsTitles()}}</td>
+                                <td>
+                                    <img src="{{$post->getImage()}}" alt="" width="100">
+                                </td>
+                                <td>
+                                    <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
 
-                        <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>
-                                <img src="{{ $user->getAvatar()  }}" alt="" class="img-responsive" width="150">
-                            </td>
-                            <td>
-                                <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
+                                    {{ Form::open([ 'route' => ['posts.destroy', $post->id] , 'method' => 'delete' ])  }}
 
-                                {{ Form::open([ 'route' => ['users.destroy', $user->id] , 'method' => 'delete' ])  }}
+                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                        <i  class="fa fa-remove"></i>
+                                    </button>
 
-                                <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                    <i  class="fa fa-remove"></i>
-                                </button>
+                                    {{Form::close()}}
 
-                                {{Form::close()}}
-                            </td>
-
-                        </tr>
-
+                                </td>
+                            </tr>
                         @endforeach
-
                         </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
+        {{Form::close()}}
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-
 
 
 @endsection

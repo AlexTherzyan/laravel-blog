@@ -7,8 +7,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Добавить тег
-                <small>приятные слова..</small>
+                Добавить пользователя
+
             </h1>
         </section>
 
@@ -18,23 +18,50 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Меняем тег</h3>
+                    <h3 class="box-title">Меняем Пользователя</h3>
                 </div>
 
-                {!! Form::open(['route' => ['tags.update' , $tag->id ], 'method' => 'put'] ) !!}
+                @include('admin.errors')
+
+                {!! Form::open(['route' => ['users.update' , $user->id ], 'method' => 'put', 'files' => true] ) !!}
                     <div class="box-body">
                         <div class="col-md-6">
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Название</label>
 
-                                <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$tag->title}}">
-                                @include('admin.errors')
+                                <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$user->name}}">
+
                             </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Название</label>
+
+                                <input name="email" type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$user->email}}">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Пароль</label>
+
+                                <input name="password"  type="password" class="form-control" id="exampleInputEmail1" placeholder="" >
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Аватар</label>
+
+                                <img width="200" src="{{$user->getAvatar()}}" class="img-responsive" alt="">
+                                <label for="exampleInputFile">Аватар</label>
+                                <input name="avatar" type="file" id="exampleInputFile">
+
+                            </div>
+
                         </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="{{route('tags.index')}}" class="btn btn-default">Назад</a>
+                        <a href="{{route('users.index')}}" class="btn btn-default">Назад</a>
                         <button class="btn btn-warning pull-right">Изменить</button>
                     </div>
                     <!-- /.box-footer-->

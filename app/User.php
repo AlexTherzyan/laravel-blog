@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -50,7 +51,6 @@ class User extends Authenticatable
     {
         $user = new static;
         $user->fill($fields);
-        $user->password = bcrypt($fields['password']);
         $user->save();
 
         return $user;
@@ -59,12 +59,21 @@ class User extends Authenticatable
     public function edit($fields)
     {
         $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
+//      $this->password = bcrypt($fields['password']);
         $this->save();
+    }
+
+    public function generatePassword($password)
+    {
+        if ($password != null){
+            $this->password = bcrypt($password);
+            $this->save();
+        }
     }
 
     public function remove()
     {
+        $this->removeAvatar();
         $this->delete();
     }
 
@@ -72,16 +81,22 @@ class User extends Authenticatable
     public function uploadAvatar($image)
     {
         if ($image == null) return;
-        //ларавеловские методы
-        if ($this->avatar != null){
-            Storage::delete('uploads/' . $this->avatar); //удаление предыдущей картинки если таковая была
-        }
+
+        $this->removeAvatar();
 
         $filename = str_random(10) . '.' . $image->extension();
         $image->storeAs('uploads',$filename);
         $this->avatar = $filename;
         $this->save();
 
+    }
+
+    public function removeAvatar ()
+    {
+        //ларавеловские методы
+        if ($this->avatar != null){
+            Storage::delete('uploads/' . $this->avatar); //удаление предыдущей картинки если таковая была
+        }
     }
 
     public function getAvatar ()
