@@ -72,6 +72,7 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
@@ -89,13 +90,20 @@ class PostsController extends Controller
         $post->toggleFeatured($request->get('is_featured'));
 
         return redirect()->route('posts.index');
+=======
+        //
+>>>>>>> 7f247987a1e1fdab82e79257e5a96c2bd1c6a3f7
     }
 
 
     public function destroy($id)
     {
+<<<<<<< HEAD
 
         Post::find($id)->remove();
         return redirect()->route('posts.index');
+=======
+        //
+>>>>>>> 7f247987a1e1fdab82e79257e5a96c2bd1c6a3f7
     }
 }

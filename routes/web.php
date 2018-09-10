@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index' );
 
 
+<<<<<<< HEAD
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function (){
 
     Route::get('/', 'DashBoardController@index');
@@ -23,3 +24,15 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function (){
     Route::resource('/posts', 'PostsController');
 });
 
+=======
+
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function (){
+
+    Route::get('/', 'DashBoardController@index');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/tags', 'TagsController');
+    Route::resource('/users', 'UsersController');
+    Route::resource('/posts', 'PostsController');
+});
+
+>>>>>>> 7f247987a1e1fdab82e79257e5a96c2bd1c6a3f7

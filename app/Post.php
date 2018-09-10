@@ -109,7 +109,6 @@ class Post extends Model
         $this->save();
     }
 
-
     public function removeImage()
     {
         if ($this->image != null){
@@ -216,10 +215,12 @@ class Post extends Model
         return 'Нет категории';
     }
 
+
     public function getCategoryID()
     {
         return $this->category != null ? $this->category->id : null;
     }
+
 
     public function getTagsTitles()
     {
