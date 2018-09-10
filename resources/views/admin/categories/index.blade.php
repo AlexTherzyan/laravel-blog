@@ -54,8 +54,8 @@
 
                                     {{ Form::open([ 'route' => ['categories.destroy', $category->id] , 'method' => 'delete' ])  }}
 
-                                    <button type="submit" class="delete">
-                                    <a href="#" class="fa fa-remove"></a>
+                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                    <i  class="fa fa-remove"></i>
                                     </button>
 
                                     {{Form::close()}}

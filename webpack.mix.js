@@ -24,7 +24,10 @@ mix.styles([
     'resources/assets/admin/plugins/select2/select2.min.css',
     'resources/assets/admin/plugins/datatables/dataTables.bootstrap.css',
     'resources/assets/admin/dist/css/AdminLTE.min.css',
-    'resources/assets/admin/dist/css/skins/_all-skins.min.css'
+    'resources/assets/admin/dist/css/skins/_all-skins.min.css',
+    'resources/assets/css/materialize.min.css',  //materialize
+
+
 ], 'public/css/admin.css');
 
 mix.scripts([
@@ -39,13 +42,14 @@ mix.scripts([
     'resources/assets/admin/plugins/iCheck/icheck.min.js',
     'resources/assets/admin/dist/js/app.min.js',
     'resources/assets/admin/dist/js/demo.js',
-    'resources/assets/admin/dist/js/scripts.js'
+    'resources/assets/admin/dist/js/scripts.js',
+    'resources/assets/js/materialize.min.js'
 ], 'public/js/admin.js');
 
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts');
 mix.copy('resources/assets/admin/dist/fonts', 'public/fonts');
 mix.copy('resources/assets/admin/dist/img', 'public/img');
-// mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css');
+mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css');
 
 // mix.styles([
 //     'resources/assets/front/css/bootstrap.min.css',

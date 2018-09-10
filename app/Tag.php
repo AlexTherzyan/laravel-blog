@@ -10,6 +10,8 @@ class Tag extends Model
 
     use Sluggable;
 
+    protected $fillable = ['title']; // указываем какие данные сохраняются в таблице
+
     //многие ко многим
     public function posts()
     {

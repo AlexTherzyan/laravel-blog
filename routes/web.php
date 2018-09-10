@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index' );
+
+
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function (){
+
+    Route::get('/', 'DashBoardController@index');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/tags', 'TagsController');
+    Route::resource('/users', 'UsersController');
+    Route::resource('/posts', 'PostsController');
 });
 
-Route::get('/admin', 'Admin\DashBoardController@index');
-
-Route::resource('/admin/categories', 'Admin\CategoriesController');

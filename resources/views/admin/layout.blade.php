@@ -225,9 +225,9 @@
                         <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
-                <li><a href="#"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-                <li><a href="#"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
+                <li><a href="{{ route('posts.index')  }}"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
+                <li><a href="{{ route('categories.index')  }}"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
+                <li><a href="{{ route('tags.index')  }}"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
                 <li>
                     <a href="#">
                         <i class="fa fa-commenting"></i> <span>Комментарии</span>
@@ -236,7 +236,7 @@
             </span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
+                <li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
                 <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
 
             </ul>
@@ -247,7 +247,9 @@
 
 
     <!-- =============================================== -->
-    @include('admin.errors')
+
+    {{--@include('admin.errors')--}}
+
 
     @yield('content')
 
@@ -458,8 +460,50 @@
 <!-- ./wrapper -->
 
 <script src="/js/admin.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function(){
+        var editor = CKEDITOR.replaceAll();
+        CKFinder.setupCKEditor( editor );
+    })
+
+</script>
 
 </body>
 
 <!-- Mirrored from almsaeedstudio.com/themes/AdminLTE/pages/examples/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Dec 2016 15:13:35 GMT -->
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
