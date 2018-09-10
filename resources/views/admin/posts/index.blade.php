@@ -71,10 +71,7 @@
                                     </button>
 
                                     {{Form::close()}}
-<<<<<<< HEAD
-=======
 
->>>>>>> 7f247987a1e1fdab82e79257e5a96c2bd1c6a3f7
                                 </td>
                             </tr>
                         @endforeach
