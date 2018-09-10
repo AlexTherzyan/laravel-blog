@@ -109,6 +109,7 @@ class Post extends Model
         $this->save();
     }
 
+
     public function removeImage()
     {
         if ($this->image != null){
